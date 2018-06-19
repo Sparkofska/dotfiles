@@ -1,4 +1,5 @@
 cp ~/.vimrc .
+cp ~/.tmux.conf .
 
 git add *
 git status

@@ -29,6 +29,8 @@ Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'alvan/vim-closetag' " https://github.com/alvan/vim-closetag
 Plugin 'Valloric/MatchTagAlways' " https://github.com/valloric/MatchTagAlways
+Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
+Plugin 'rakr/vim-two-firewatch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,7 +41,7 @@ filetype plugin indent on    " required
 set t_Co=256   " This is may or may not needed.
 set background=dark
 colorscheme gruvbox
-
+" colo two-firewatch
 
 " enable syntax highlighting
 syntax on
@@ -49,11 +51,16 @@ syntax on
 set number
 set relativenumber
 
+" leave some lines visible at top and end of screen when scrolling
+set scrolloff=3
+
 " show a visual line under the cursor's current line
 set cursorline
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
+" Clear match highlighting
+noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " display whitespaces
 set listchars=tab:>-,trail:~,extends:>,precedes:<
@@ -63,6 +70,16 @@ set list
 set hlsearch
 " highlight search result while typing
 set incsearch
+
+"display incomplete commands
+set showcmd
+"display the mode you are in everytime
+set showmode
+"display incomplete commands
+set mouse=a
+
+" when in insert mode, ready to paste, if you press <F2>, Vim will switch to paste mode, disabling all kinds of smartness and just pasting a whole buffer of text. Then, you can disable paste mode again with another press of <F2>. Nice and simple
+set pastetoggle=<F2>
 
 " default to wrapped lines broken at wohle words
 :set wrap linebreak
@@ -79,29 +96,34 @@ nmap <leader>n :NERDTreeToggle<cr>
 
 " easier split navigation (get rid of <C-W>
 " nnoremap <C-J> <C-W><C-J> " interferes with <++>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 " more natural split opening
 set splitbelow
 set splitright
 
 " hard-mode options
 " no arrows
-nnoremap <buffer> <Left> <Esc>
-nnoremap <buffer> <Right> <Esc>
-nnoremap <buffer> <Up> <Esc>
-nnoremap <buffer> <Down> <Esc>
+"nnoremap <buffer> <Left> <Esc>
+"nnoremap <buffer> <Right> <Esc>
+"nnoremap <buffer> <Up> <Esc>
+"nnoremap <buffer> <Down> <Esc>
 
-inoremap <buffer> <Left> <Esc>
-inoremap <buffer> <Right> <Esc>
-inoremap <buffer> <Up> <Esc>
-inoremap <buffer> <Down> <Esc>
+"inoremap <buffer> <Left> <Esc>
+"inoremap <buffer> <Right> <Esc>
+"inoremap <buffer> <Up> <Esc>
+"inoremap <buffer> <Down> <Esc>
 
-vnoremap <buffer> <Left> <Esc>
-vnoremap <buffer> <Right> <Esc>
-vnoremap <buffer> <Up> <Esc>
-vnoremap <buffer> <Down> <Esc>
+"vnoremap <buffer> <Left> <Esc>
+"vnoremap <buffer> <Right> <Esc>
+"vnoremap <buffer> <Up> <Esc>
+"vnoremap <buffer> <Down> <Esc>
+
+" for Markdown .md files
+" underline headings
+nmap <leader>h1 yypVr=
+nmap <leader>h2 yypVr-
 
 " define BadWhitespace before using in a match
 " highlight BadWhitespace ctermbg=red guibg=darkred
@@ -110,29 +132,29 @@ vnoremap <buffer> <Down> <Esc>
 
 " python intendation
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+      \ set tabstop=4 |
+      \ set softtabstop=4 |
+      \ set shiftwidth=4 |
+      \ set textwidth=79 |
+      \ set expandtab |
+      \ set autoindent |
+      \ set fileformat=unix
 
 " html intendation
 au BufNewFile,BufRead *.js,*.html,*.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set expandtab |
-    \ set smarttab
+      \ set tabstop=2 |
+      \ set softtabstop=2 |
+      \ set shiftwidth=2 |
+      \ set expandtab |
+      \ set smarttab
 
 au BufNewFile,BufRead *.h,*.hpp,*.cpp
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set smarttab
+      \ set tabstop=4 |
+      \ set softtabstop=4 |
+      \ set shiftwidth=4 |
+      \ set expandtab |
+      \ set autoindent |
+      \ set smarttab
 
 " Octave syntax  ----------------------------------------
 augroup filetypedetect 
@@ -142,10 +164,6 @@ augroup END
 " Latex stuff --------------------------------------------
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a single file. This will confuse Latex-Suite. Set your grep
@@ -159,3 +177,11 @@ filetype indent on
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
+
+" disable automatic folding on startup
+let Tex_FoldedSections=""
+let Tex_FoldedEnvironments=""
+let Tex_FoldedMisc=""
+
+" disable smart quotes
+let g:Tex_SmartKeyQuote=0
