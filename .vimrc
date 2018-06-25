@@ -6,7 +6,7 @@ set secure
 
 " A plugin installation tool
 " https://github.com/tpope/vim-pathogen
-execute pathogen#infect()
+" execute pathogen#infect()
 
 
 " VUNDLE BEGIN ----------------
@@ -30,8 +30,9 @@ Bundle 'Valloric/YouCompleteMe'
 Plugin 'alvan/vim-closetag' " https://github.com/alvan/vim-closetag
 Plugin 'Valloric/MatchTagAlways' " https://github.com/valloric/MatchTagAlways
 Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
-Plugin 'rakr/vim-two-firewatch' " theme
-Plugin 'christoomey/vim-tmux-navigator' " seemless switching of splits/panes in vim and tmux
+Plugin 'rakr/vim-two-firewatch'
+Plugin 'morhetz/gruvbox' " gruvbox colorscheme
+Plugin 'christoomey/vim-tmux-navigator' " seemless navigation between vim and tmux panes
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,7 +77,7 @@ set incsearch
 set showcmd
 "display the mode you are in everytime
 set showmode
-"display incomplete commands
+" activate mouse
 set mouse=a
 
 " when in insert mode, ready to paste, if you press <F2>, Vim will switch to paste mode, disabling all kinds of smartness and just pasting a whole buffer of text. Then, you can disable paste mode again with another press of <F2>. Nice and simple
