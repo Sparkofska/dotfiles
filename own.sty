@@ -1,0 +1,35 @@
+% this is my first package
+% 
+% (c) Jonas M
+%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{own}
+  [2018/05/08 v0.01 LaTeX package for my own purpose]
+
+\RequirePackage[german]{babel} % for german quotes
+\RequirePackage{hyperref} % for \url command
+
+% There are examples %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\def\hi{Hello, this is my own package}
+%\let\myDate\date
+%\newcommand\GoodBye[1][\bfseries]{{#1Good Bye}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% German quotes
+\newcommand{\gqq}[1]{\glqq{}#1\grqq{}}
+\newcommand{\gq}[1]{\glq{}#1\grq{}}
+
+% for inline Code
+\newcommand{\code}[1]{\texttt{#1}} 
+
+% backslash (that is also usable in texttt)
+\newcommand\bslash{\char`\\}
+
+% Common abbreviations
+\renewcommand\dh{d.\,h. }
+\newcommand\zB{z.\,B. }
+\newcommand{\etal}{\textit{et al}. }
+
+\endinput
+%%
+%% End of file `mypackage.sty'.
