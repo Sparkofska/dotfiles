@@ -147,16 +147,17 @@ augroup filetypedetect
 augroup END 
 
 " Latex stuff --------------------------------------------
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
+" latex intendation
+au BufNewFile,BufRead *.tex
+      \ set tabstop=2 |
+      \ set softtabstop=2 |
+      \ set shiftwidth=2 |
+      \ set expandtab
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a single file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
