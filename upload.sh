@@ -1,5 +1,6 @@
 cp ~/.vimrc .
 cp ~/.tmux.conf .
+cp ~/texmf/tex/latex/jonasOwn/own.sty .
 
 git add *
 git status

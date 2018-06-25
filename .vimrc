@@ -1,6 +1,6 @@
 "
 " forces vim to source .vimrc file if it is present in working directory
-set exrc
+" set exrc
 " might be security hole -> enable security option (restrict some commands)
 set secure
 
@@ -96,31 +96,14 @@ set pastetoggle=<F2>
 " toggle nerdtree
 nmap <leader>n :NERDTreeToggle<cr>
 
-" easier split navigation (get rid of <C-W>
-" nnoremap <C-J> <C-W><C-J> " interferes with <++>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>gv
+inoremap <C-S> <C-O>:update<CR>
+
 " more natural split opening
 set splitbelow
 set splitright
-
-" hard-mode options
-" no arrows
-"nnoremap <buffer> <Left> <Esc>
-"nnoremap <buffer> <Right> <Esc>
-"nnoremap <buffer> <Up> <Esc>
-"nnoremap <buffer> <Down> <Esc>
-
-"inoremap <buffer> <Left> <Esc>
-"inoremap <buffer> <Right> <Esc>
-"inoremap <buffer> <Up> <Esc>
-"inoremap <buffer> <Down> <Esc>
-
-"vnoremap <buffer> <Left> <Esc>
-"vnoremap <buffer> <Right> <Esc>
-"vnoremap <buffer> <Up> <Esc>
-"vnoremap <buffer> <Down> <Esc>
 
 " for Markdown .md files
 " underline headings
@@ -187,3 +170,8 @@ let Tex_FoldedMisc=""
 
 " disable smart quotes
 let g:Tex_SmartKeyQuote=0
+
+" redef C-j to C-space: the <++> placeholder of latex-suite interferes with the window switching c-j
+verbose nmap <leader>j <Plug>IMAP_JumpForward
+verbose imap <leader>j <Plug>IMAP_JumpForward
+verbose vmap <leader>j <Plug>IMAP_JumpForward
