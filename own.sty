@@ -9,6 +9,8 @@
 \RequirePackage[german]{babel} % for german quotes
 \RequirePackage{hyperref} % for \url command
 
+\usepackage{xspace}
+
 % There are examples %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\def\hi{Hello, this is my own package}
 %\let\myDate\date
@@ -26,9 +28,16 @@
 \newcommand\bslash{\char`\\}
 
 % Common abbreviations
-\renewcommand\dh{d.\,h. }
-\newcommand\zB{z.\,B. }
-\newcommand{\etal}{\textit{et al}. }
+\renewcommand\dh{\mbox{d.\,h.}\xspace}
+\newcommand\zB{\mbox{z.\,B.}\xspace}
+\newcommand\uA{\mbox{u.\,A.}\xspace}
+\newcommand{\iAllg}{\mbox{i.\,Allg.}\xspace}
+\newcommand{\etal}{\textit{\mbox{et al}}.\xspace}
+\newcommand{\bzw}{bzw.\xspace}
+\newcommand{\zzgl}{zzgl.\xspace}
+\newcommand{\etc}{etc.\xspace}
+\newcommand{\engl}{\textit{engl.}\xspace}
+
 
 % Colored commands
 \RequirePackage{xcolor}
