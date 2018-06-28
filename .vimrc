@@ -90,7 +90,7 @@ set pastetoggle=<F2>
 " leader
 :let mapleader = ","
 " indent all lines and jump back to last position
-:nnoremap <leader>f gg=G<C-O>
+:nnoremap <leader>f gg=G<C-o>
 " toggle nerdtree
 nmap <leader>n :NERDTreeToggle<cr>
 
