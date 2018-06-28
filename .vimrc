@@ -61,8 +61,6 @@ set cursorline
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
-" Clear match highlighting
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " display whitespaces
 set listchars=tab:>-,trail:~,extends:>,precedes:<
@@ -100,6 +98,12 @@ nmap <leader>n :NERDTreeToggle<cr>
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>gv
 inoremap <C-S> <C-O>:update<CR>
+"
+" Clear match highlighting
+noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+
+" switch case of word's first letter
+nmap <leader>c mmb~`m
 
 " more natural split opening
 set splitbelow
