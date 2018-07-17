@@ -27,8 +27,8 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
 Bundle 'Valloric/YouCompleteMe'
-Plugin 'alvan/vim-closetag' " https://github.com/alvan/vim-closetag
-Plugin 'Valloric/MatchTagAlways' " https://github.com/valloric/MatchTagAlways
+Plugin 'alvan/vim-closetag' " close xml tag automatically
+Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
 Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
 Plugin 'rakr/vim-two-firewatch'
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
