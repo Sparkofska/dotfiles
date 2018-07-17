@@ -178,9 +178,9 @@ let Tex_FoldedMisc=""
 let g:Tex_SmartKeyQuote=0
 
 " redef C-j to C-space: the <++> placeholder of latex-suite interferes with the window switching c-j
-verbose nmap <leader>j <Plug>IMAP_JumpForward
-verbose imap <leader>j <Plug>IMAP_JumpForward
-verbose vmap <leader>j <Plug>IMAP_JumpForward
+verbose nmap <C-g> <Plug>IMAP_JumpForward
+verbose imap <C-g> <Plug>IMAP_JumpForward
+verbose vmap <C-g> <Plug>IMAP_JumpForward
 
 " vim-smooth-scroll Plugin settings
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
