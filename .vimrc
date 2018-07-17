@@ -26,6 +26,7 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
+Plugin 'terryma/vim-smooth-scroll' " smooth scrolling on ctlr-d
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'alvan/vim-closetag' " close xml tag automatically
 Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
@@ -180,3 +181,9 @@ let g:Tex_SmartKeyQuote=0
 verbose nmap <leader>j <Plug>IMAP_JumpForward
 verbose imap <leader>j <Plug>IMAP_JumpForward
 verbose vmap <leader>j <Plug>IMAP_JumpForward
+
+" vim-smooth-scroll Plugin settings
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
