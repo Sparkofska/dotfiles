@@ -26,7 +26,6 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
-Plugin 'terryma/vim-smooth-scroll' " smooth scrolling on ctlr-d
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'alvan/vim-closetag' " close xml tag automatically
 Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
@@ -34,6 +33,8 @@ Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
 Plugin 'rakr/vim-two-firewatch'
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
 Plugin 'christoomey/vim-tmux-navigator' " seemless navigation between vim and tmux panes
+Plugin 'majutsushi/tagbar' " tags and outline plugin
+Plugin 'tpope/vim-surround' " add surround functionality
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -88,6 +89,14 @@ set pastetoggle=<F2>
 " map j gj
 " map k gk
 
+" let vim handle typing mistakes
+:command W w
+:command Q q
+:command Wq wq
+:command WQ wq
+:command Qa qa
+:command Wa wa
+
 " leader
 :let mapleader = ","
 " indent all lines and jump back to last position
@@ -108,17 +117,41 @@ nmap <leader>c mmb~`m
 
 " more natural split opening
 set splitbelow
-set splitright
+" set splitright
 
 " for Markdown .md files
 " underline headings
 nmap <leader>h1 yypVr=
 nmap <leader>h2 yypVr-
 
+" Plugin Settings
+" =================
+
+" YouCompleteMe
+" ---------------
+
+" close ycm auto completion window when you're done
+let g:ycm_autoclose_preview_window_after_completion=1
+" shortcut for ycm for goto definition
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" TagBar
+" ------
+
+nmap <leader>o :TagbarToggle<CR>
+
 " define BadWhitespace before using in a match
 " highlight BadWhitespace ctermbg=red guibg=darkred
 " mark extra whitespace as bad, and probably color it red
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Language dependend Setings
+" ==========================
+" see this post for a clean way of handling language specific settings:
+" https://medium.com/usevim/language-specific-settings-8aaae487fc17
+
+" Python
+" ------
 
 " python intendation
 au BufNewFile,BufRead *.py
@@ -128,7 +161,24 @@ au BufNewFile,BufRead *.py
       \ set textwidth=79 |
       \ set expandtab |
       \ set autoindent |
+      \ set smarttab |
       \ set fileformat=unix
+
+
+" make vim aware of virtualenv, ans use it in autocompletion
+"python with virtualenv support
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  #execfile(activate_this, dict(__file__=activate_this) )
+  exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
+EOF
+
+" html and co
+" -----------
 
 " html intendation
 au BufNewFile,BufRead *.js,*.html,*.css
@@ -151,7 +201,9 @@ augroup filetypedetect
   au! BufRead,BufNewFile *.m,*.oct set filetype=octave 
 augroup END 
 
-" Latex stuff --------------------------------------------
+" Latex 
+" -----
+
 " latex intendation
 au BufNewFile,BufRead *.tex
       \ set tabstop=2 |
@@ -181,9 +233,3 @@ let g:Tex_SmartKeyQuote=0
 verbose nmap <C-g> <Plug>IMAP_JumpForward
 verbose imap <C-g> <Plug>IMAP_JumpForward
 verbose vmap <C-g> <Plug>IMAP_JumpForward
-
-" vim-smooth-scroll Plugin settings
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
