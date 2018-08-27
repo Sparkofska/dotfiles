@@ -97,6 +97,14 @@ set pastetoggle=<F2>
 :command Qa qa
 :command Wa wa
 
+" " Mappings
+" " ========
+
+" easier increment/decrement of numbers (tmux escape key <C-a> also interferes with the default mapping)
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+
 " leader
 :let mapleader = ","
 " indent all lines and jump back to last position
