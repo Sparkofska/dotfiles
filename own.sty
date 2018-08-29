@@ -22,7 +22,9 @@
 \newcommand{\gq}[1]{\glq{}#1\grq{}}
 
 % for inline Code
-\newcommand{\code}[1]{\texttt{#1}} 
+\newcommand{\code}[1]{\texttt{#1}}
+
+% TODO would be nice to have multiline code also
 
 % backslash (that is also usable in texttt)
 \newcommand\bslash{\char`\\}
@@ -39,20 +41,31 @@
 \newcommand{\sog}{sog.\xspace}
 \newcommand{\engl}{\textit{engl.}\xspace}
 
-
 % Colored commands
 \RequirePackage{xcolor}
 \newcommand{\TODO}[1]{{\color{violet}\emph{TODO:} #1}}
 
 %\newcommand{\figurename}{Abbildung}
 %\newcommand{\tablename}{Tabelle}
-\newcommand{\chaptername}{Kapitel}
+%\newcommand{\chaptername}{Kapitel}
+%\newcommand{\pagename}{Seite}
 \newcommand{\sectionname}{Abschnitt}
 \newcommand{\sourcename}{Quelle}
 \newcommand{\eqname}{Gleichung}
 
+% put source of an image as Bildunterschrift
 \newcommand{\figsource}[1]{\raggedleft\footnotesize \sourcename:~#1}
+% url as footnote with last visited date
 \newcommand{\urlfootnote}[2]{\footnote{\url{#1}, letztmals besucht am #2}}
+
+% Table columns
+\usepackage{tabulary}
+% hides this column (use \varnothing in header)
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+
 
 \endinput
 %%

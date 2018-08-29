@@ -1,4 +1,4 @@
-"
+" true
 " forces vim to source .vimrc file if it is present in working directory
 " set exrc
 " might be security hole -> enable security option (restrict some commands)
@@ -35,6 +35,9 @@ Plugin 'morhetz/gruvbox' " gruvbox colorscheme
 Plugin 'christoomey/vim-tmux-navigator' " seemless navigation between vim and tmux panes
 Plugin 'majutsushi/tagbar' " tags and outline plugin
 Plugin 'tpope/vim-surround' " add surround functionality
+Plugin 'can3p/incbool.vim' " Toggle true/false
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file finder
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,6 +75,8 @@ set list
 set hlsearch
 " highlight search result while typing
 set incsearch
+" only case sensitive when search string contains uppercase letter (does not " apply for * and #)
+set smartcase
 
 "display incomplete commands
 set showcmd
@@ -84,18 +89,18 @@ set mouse=a
 set pastetoggle=<F2>
 
 " default to wrapped lines broken at wohle words
-:set wrap linebreak
+set wrap linebreak
 " move in wrapped lines
 " map j gj
 " map k gk
 
 " let vim handle typing mistakes
-:command W w
-:command Q q
-:command Wq wq
-:command WQ wq
-:command Qa qa
-:command Wa wa
+command! W w
+command! Q q
+command! Wq wq
+command! WQ wq
+command! Qa qa
+command! Wa wa
 
 " " Mappings
 " " ========
@@ -104,13 +109,30 @@ set pastetoggle=<F2>
 nnoremap + <C-a>
 nnoremap - <C-x>
 
+" Some mappings copied from <https://github.com/bag-man/dotfiles/blob/master/vimrc>
+" That is a nice one: have a look again :)
+" ---------------------------------------------------------------------------------
+" write file as sudo (without having opened as sudo)
+cmap w!! w !sudo tee > /dev/null %
+map n nzz
+"map <Cr> O<Esc>j
+map <Cr> o<Esc>
+
+" free mappings
+" <leader><leader>
+" <Space>
+" <leader><space>
+" <C-Space>
 
 " leader
 :let mapleader = ","
 " indent all lines and jump back to last position
-:nnoremap <leader>f gg=G<C-o>
+nnoremap <leader>f gg=G<C-o>
 " toggle nerdtree
 nmap <leader>n :NERDTreeToggle<cr>
+
+" quick open vimrc file in new tab
+nnoremap <leader>v :tabe $MYVIMRC<cr>
 
 " Use CTRL-S for saving, also in Insert mode
 noremap <C-S> :update<CR>
@@ -134,6 +156,30 @@ nmap <leader>h2 yypVr-
 
 " Plugin Settings
 " =================
+
+" CrtlP
+" -----
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP .'
+
+set wildignore+=*.so,*.swp,*.zip,*.pdf
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|pdf)$',
+  \ }
+
+" Makes CtrlP faster:
+" - set a persistent cache dir
+" - Use ag for listing files. Lightning fast and respects .gitignore
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+" Fallback to grep would be nice
+" else
+"   " Fall back to using git ls-files if Ag is not available
+"   let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+"   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+endif
 
 " YouCompleteMe
 " ---------------
