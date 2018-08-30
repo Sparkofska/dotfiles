@@ -120,12 +120,16 @@ map <Cr> o<Esc>
 
 " free mappings
 " <leader><leader>
-" <Space>
+nnoremap <Space> *<c-o>
 " <leader><space>
 " <C-Space>
 
 " leader
 :let mapleader = ","
+
+" reload default vimrc
+nnoremap <leader><F5> :source $MYVIMRC<cr>
+
 " indent all lines and jump back to last position
 nnoremap <leader>f gg=G<C-o>
 " toggle nerdtree
@@ -145,9 +149,12 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 " switch case of word's first letter
 nmap <leader>c mmb~`m
 
+" toggle checkbox in markdown syntax (first in row) [ ] <-> [x]
+nnoremap <leader>x :s/\[[x ]\]/\=submatch(0) == '[x]' ? '[ ]' : '[x]'/<cr>:noh<cr><c-o>
+
 " more natural split opening
 set splitbelow
-" set splitright
+set splitright
 
 " for Markdown .md files
 " underline headings
