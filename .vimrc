@@ -110,6 +110,10 @@ command! Wa wa
 nnoremap + <C-a>
 nnoremap - <C-x>
 
+" Keep selection after indenting
+:vnoremap < <gv
+:vnoremap > >gv
+
 " Some mappings copied from <https://github.com/bag-man/dotfiles/blob/master/vimrc>
 " That is a nice one: have a look again :)
 " ---------------------------------------------------------------------------------
@@ -121,7 +125,7 @@ map <Cr> o<Esc>
 
 " free mappings
 " <leader><leader>
-nnoremap <Space> *<c-o>
+nnoremap <Space> mm*`m
 " <leader><space>
 " <C-Space>
 
@@ -132,7 +136,7 @@ nnoremap <Space> *<c-o>
 nnoremap <leader><F5> :source $MYVIMRC<cr>
 
 " indent all lines and jump back to last position
-nnoremap <leader>f gg=G<C-o>
+nnoremap <leader>f mmgg=G`m
 " toggle nerdtree
 nmap <leader>n :NERDTreeToggle<cr>
 
