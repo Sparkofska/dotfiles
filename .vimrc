@@ -37,6 +37,7 @@ Plugin 'majutsushi/tagbar' " tags and outline plugin
 Plugin 'tpope/vim-surround' " add surround functionality
 Plugin 'can3p/incbool.vim' " Toggle true/false
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file finder
+Plugin 'michaeljsmith/vim-indent-object' " indent as text object. Add mappings ai, ii, aI, iI
 
 
 " All of your Plugins must be added before the following line
