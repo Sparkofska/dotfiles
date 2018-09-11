@@ -144,10 +144,14 @@ nmap <leader>n :NERDTreeToggle<cr>
 nnoremap <leader>v :tabe $MYVIMRC<cr>
 
 " Use CTRL-S for saving, also in Insert mode
-noremap <C-S> :update<CR>
-vnoremap <C-S> <C-C>:update<CR>gv
-inoremap <C-S> <C-O>:update<CR>
-"
+" They don't work, because <C-S> freezes my terminal
+" noremap <C-S> :update<CR>
+" vnoremap <C-S> <C-C>:update<CR>gv
+" inoremap <C-S> <C-O>:update<CR>
+
+" Replace all is aliased to S.
+nnoremap S :%s//g<Left><Left>
+
 " Clear match highlighting
 noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
