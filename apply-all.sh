@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# TODO This file is deprecated. Use `create_symlinks.sh` instead
+
 set -x #echo on
 
 cp .tmux.conf ~/
