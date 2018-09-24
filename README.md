@@ -39,7 +39,7 @@ This is just a list for myself to memorize which programs I need on a fresh inst
 
 - [ ] a window manager (i3?)
 - [ ] a file manager
-- [ ] an image viewer?
+- [ ] an image viewer? (feh?)
 
 Less frequently used, can be installed on demand:
 
