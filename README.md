@@ -11,6 +11,14 @@ if [ -f ~/M/dotfiles/.bash_aliases ]; then
 fi
 ```
 
+*gruvbox theme for gnome terminal*
+
+<https://github.com/Mayccoll/Gogh>
+```
+sudo apt-get install dconf-cli
+wget -O xt https://git.io/v7eBS && chmod +x xt && ./xt && rm xt
+```
+
 ## Todo
 
 - [ ] make symlink to `.vimrc`
