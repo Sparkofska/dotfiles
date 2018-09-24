@@ -32,6 +32,7 @@ Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
 Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
 Plugin 'rakr/vim-two-firewatch'
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
+Plugin 'altercation/vim-colors-solarized' " solarized colorscheme
 Plugin 'christoomey/vim-tmux-navigator' " seemless navigation between vim and tmux panes
 Plugin 'majutsushi/tagbar' " tags and outline plugin
 Plugin 'tpope/vim-surround' " add surround functionality
@@ -47,12 +48,17 @@ filetype plugin indent on    " required
 
 " Setting the Colorscheme
 set t_Co=256   " This is may or may not needed.
+"let g:solarized_termcolors=256 " solarized setting
+"let g:solarized_termtrans = 1 " This gets rid of the grey background
+"colorscheme solarized
 set background=dark
 colorscheme gruvbox
-" colo two-firewatch
+let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_termcolors='16'
 
 " enable syntax highlighting
 syntax on
+syntax enable
 
 " show line numbers
 " disable via set nonumber
