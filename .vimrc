@@ -128,7 +128,8 @@ map n nzz
 
 " free mappings
 " <leader><leader>
-nnoremap <Space> mm*`m
+" highlight all occurences and show count stats in command line
+nnoremap <space> mm*:%s///gn<cr>`m
 " <leader><space>
 " <C-Space>
 
