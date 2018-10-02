@@ -35,15 +35,15 @@ This is just a list for myself to memorize which programs I need on a fresh inst
 - chromium-browser
 - evince
 - pandoc
-- shutter
+- shutter (can be replaced by `gnome-screenshot -i` or `scrot`)
 
 - [ ] a window manager (i3?)
-- [ ] a file manager
+- [ ] a file manager (`ls`?)
 - [ ] an image viewer? (feh?)
 
 Less frequently used, can be installed on demand:
 
-- meld
+- meld (may be replaced by `vimdiff`)
 - gimp
 - gparted
 - virtualbox

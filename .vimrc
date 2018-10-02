@@ -167,6 +167,8 @@ nmap <leader>c mmb~`m
 " toggle checkbox in markdown syntax (first in row) [ ] <-> [x]
 nnoremap <leader>x :s/\[[x ]\]/\=submatch(0) == '[x]' ? '[ ]' : '[x]'/<cr>:noh<cr><c-o>
 
+nnoremap <leader>) A)<Esc>
+
 " more natural split opening
 set splitbelow
 set splitright
