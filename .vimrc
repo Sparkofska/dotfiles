@@ -58,6 +58,7 @@ let g:gruvbox_termcolors='16'
 
 " enable syntax highlighting
 syntax on
+syntax enable
 
 " show line numbers
 " disable via set nonumber
@@ -125,6 +126,7 @@ nnoremap - <C-x>
 " write file as sudo (without having opened as sudo)
 cmap w!! w !sudo tee > /dev/null %
 map n nzz
+"map <Cr> O<Esc>j
 
 " free mappings
 " <leader><leader>
@@ -168,6 +170,8 @@ nnoremap <leader>x :s/\[[x ]\]/\=submatch(0) == '[x]' ? '[ ]' : '[x]'/<cr>:noh<c
 " mappings for programming
 " join variable declaration
 nnoremap <leader>pj mmgdf=w"my$"_ddV`m:s//<c-r>m/gc<cr>
+
+nnoremap <leader>) A)<Esc>
 
 " more natural split opening
 set splitbelow
