@@ -127,7 +127,6 @@ nnoremap - <C-x>
 cmap w!! w !sudo tee > /dev/null %
 map n nzz
 "map <Cr> O<Esc>j
-map <Cr> o<Esc>
 
 " free mappings
 " <leader><leader>
@@ -166,6 +165,10 @@ nmap <leader>c mmb~`m
 
 " toggle checkbox in markdown syntax (first in row) [ ] <-> [x]
 nnoremap <leader>x :s/\[[x ]\]/\=submatch(0) == '[x]' ? '[ ]' : '[x]'/<cr>:noh<cr><c-o>
+
+" mappings for programming
+" join variable declaration
+nnoremap <leader>pj mmgdf=w"my$"_ddV`m:s//<c-r>m/gc<cr>
 
 nnoremap <leader>) A)<Esc>
 
@@ -222,6 +225,11 @@ nmap <leader>o :TagbarToggle<CR>
 " highlight BadWhitespace ctermbg=red guibg=darkred
 " mark extra whitespace as bad, and probably color it red
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Ale
+" ---
+
+nnoremap <Leader>l :ALELint<CR>
 
 " Language dependend Setings
 " ==========================
