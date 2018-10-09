@@ -53,7 +53,7 @@ set t_Co=256   " This is may or may not needed.
 "colorscheme solarized
 set background=dark
 colorscheme gruvbox
-let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_termcolors='16'
 
 " enable syntax highlighting
@@ -96,7 +96,7 @@ set mouse=a
 set pastetoggle=<F2>
 
 " default to wrapped lines broken at wohle words
-set wrap linebreak
+set wrap
 " move in wrapped lines
 " map j gj
 " map k gk
@@ -132,6 +132,7 @@ map n nzz
 " <leader><leader>
 " highlight all occurences and show count stats in command line
 nnoremap <space> mm*:%s///gn<cr>`m
+nnoremap <BS> :b#<CR>
 " <leader><space>
 " <C-Space>
 
@@ -160,6 +161,9 @@ nnoremap S :%s//g<Left><Left>
 
 " Clear match highlighting
 noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+
+" shortcut for mapping double-leader while editing (leader, shift-leader)
+nnoremap <leader>< :nmap <leader><leader> 
 
 " switch case of word's first letter
 nmap <leader>c mmb~`m
@@ -215,7 +219,9 @@ endif
 " close ycm auto completion window when you're done
 let g:ycm_autoclose_preview_window_after_completion=1
 " shortcut for ycm for goto definition
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap <leader>G :tab split \| YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>G :vs \| YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " TagBar
 " ------
