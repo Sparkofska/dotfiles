@@ -195,6 +195,9 @@ bindsym $mod+r mode "resize"
 # layouts are: us standart and us international with dead keys
 exec --no-startup-id setxkbmap -layout us,us -variant ,intl -option grp:shift_caps_toggle
 
+# set a background image
+exec --no-startup-id feh --bg-max ~/M/dotfiles/img/bg-himalaya.png
+
 # set monitor settings via xranr
 exec "xrandr --output HDMI-1 --right-of HDMI-2"
 
@@ -212,10 +215,10 @@ bar {
         tray_output primary
 
     colors {
-        # bar background color
-        background $dark0
-        # text color used for blocks that do not have a color specified.
-        statusline $light0
+        background #1D2021
+        statusline #FBF1C7
+        separator  #928374
+
         # workspaces section
         #                    border  backgr. text
         focused_workspace    $light0 $gray_244 $light0_hard
@@ -290,9 +293,6 @@ client.urgent           $neutral_red $neutral_red $light0_hard $neutral_red $neu
 #client.urgent           $red $red $white $red $red
 
 #end of window title bars & borders section
-
-# set a background image
-exec --no-startup-id feh --bg-max ~/M/dotfiles/img/bg-himalaya.png
 
 # enable numlock
 exec_always --no-startup-id numlockx on
