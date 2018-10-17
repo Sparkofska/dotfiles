@@ -232,6 +232,9 @@ bar {
 #THEME#
 #######
 
+# hide window title and set border width
+new_window pixel 1
+
 # set primary gruvbox colorscheme colors
 #   GRUVCOLR         HEX
 #   --------------   -------
@@ -281,8 +284,8 @@ set $faded_orange     #af3a03
 #start of window title bars & borders section
 
 # class                 border       |backgr      |text        |indicator   |child_border
-client.focused          $gray_244    $dark0       $light0      $gray_244    $dark0
-client.focused_inactive $gray_244    $dark0       $gray_244    $gray_244    $dark0
+client.focused          $gray_244    $light4      $light0      $gray_244    $dark0
+client.focused_inactive $gray_244    $dark4       $gray_244    $gray_244    $dark0
 client.unfocused        $dark0       $dark0       $gray_244    $gray_244    $dark0
 client.urgent           $neutral_red $neutral_red $light0_hard $neutral_red $neutral_red
 
