@@ -1,6 +1,6 @@
 " true
 " forces vim to source .vimrc file if it is present in working directory
-" set exrc
+set exrc
 " might be security hole -> enable security option (restrict some commands)
 set secure
 
@@ -53,7 +53,7 @@ set t_Co=256   " This is may or may not needed.
 "colorscheme solarized
 set background=dark
 colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
+"let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_termcolors='16'
 
 " enable syntax highlighting
