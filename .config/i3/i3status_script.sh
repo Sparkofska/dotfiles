@@ -11,8 +11,8 @@ function determine_tutorial() {
 function determine_keyboard_layout() {
     # query the keyboard layout and set a string depending on the code
     case "$(xset -q|grep LED| awk '{ print $10 }')" in
-      "00000000") KBD="us" ;;
-      "00001000") KBD="int." ;;
+      "00000002") KBD="us" ;;
+      "00001002") KBD="int." ;;
       *) KBD="unknown" ;;
     esac
     # return formatted string

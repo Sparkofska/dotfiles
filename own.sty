@@ -9,7 +9,14 @@
 \RequirePackage[german]{babel} % for german quotes
 \RequirePackage{hyperref} % for \url command
 
-\usepackage{xspace}
+% for syntax highlighting of code
+\RequirePackage{xcolor}
+\RequirePackage{listings}
+
+% for symbols like checkmark
+\RequirePackage{amssymb}
+
+\RequirePackage{xspace}
 
 % There are examples %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\def\hi{Hello, this is my own package}
@@ -29,6 +36,20 @@
 \newcommand{\code}[1]{\texttt{#1}}
 
 % TODO would be nice to have multiline code also
+\lstset{
+language=Python,
+basicstyle=\ttfamily,
+otherkeywords={self},             
+keywordstyle=\ttfamily\color{blue!90!black},
+keywords=[2]{True,False},
+keywords=[3]{ttk},
+%keywordstyle={[2]\ttfamily\color{yellow!80!orange}},
+keywordstyle={[3]\ttfamily\color{red!80!orange}},
+emph={MyClass,__init__},          
+emphstyle=\ttfamily\color{red!80!black},    
+stringstyle=\color{green!80!black},
+showstringspaces=false            
+}
 
 % backslash (that is also usable in texttt)
 \newcommand\bslash{\char`\\}
@@ -67,13 +88,17 @@
 \newcommand{\urlfootnote}[2]{\footnote{\url{#1}, letztmals besucht am #2}}
 
 % Table columns
-\usepackage{tabulary}
+\RequirePackage{tabulary}
 % hides this column (use \varnothing in header)
 \newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
 
+% 
+\newcommand{\uncheckedbox}{\ensuremath{\square}}
+\newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
+\newcommand{\crossedbox}{\ensuremath{\boxtimes}}
 
 \endinput
 %%
