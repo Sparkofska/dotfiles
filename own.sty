@@ -6,7 +6,8 @@
 \ProvidesPackage{own}
   [2018/05/08 v0.01 LaTeX package for my own purpose]
 
-\RequirePackage[german]{babel} % for german quotes
+\RequirePackage{ngerman}
+%\RequirePackage[ngerman]{babel}
 \RequirePackage{hyperref} % for \url command
 
 % for syntax highlighting of code
@@ -23,6 +24,9 @@
 %\let\myDate\date
 %\newcommand\GoodBye[1][\bfseries]{{#1Good Bye}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% no  operation
+\newcommand{\nop}[1]{}
 
 % German quotes
 \newcommand{\gqq}[1]{\glqq{}#1\grqq{}}
@@ -61,6 +65,7 @@ showstringspaces=false
 \newcommand{\iAllg}{\mbox{i.\,Allg.}\xspace}
 \newcommand{\etal}{\mbox{et al}.\xspace}
 \newcommand{\bzw}{bzw.\xspace}
+\newcommand{\bspw}{bspw.\xspace}
 \newcommand{\zzgl}{zzgl.\xspace}
 \newcommand{\etc}{etc.\xspace}
 \newcommand{\sog}{sog.\xspace}
