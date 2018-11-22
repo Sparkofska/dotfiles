@@ -7,7 +7,7 @@
   [2018/05/08 v0.01 LaTeX package for my own purpose]
 
 \RequirePackage[german]{babel} % for german quotes
-\RequirePackage{hyperref} % for \url command
+%\RequirePackage{hyperref} % for \url command
 
 % for syntax highlighting of code
 \RequirePackage{xcolor}
@@ -34,6 +34,8 @@
 
 % for inline Code
 \newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\cpp}{\mbox{C\texttt{++}}\xspace}
 
 % TODO would be nice to have multiline code also
 \lstset{
