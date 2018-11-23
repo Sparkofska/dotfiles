@@ -92,8 +92,8 @@ set smartcase
 set showcmd
 "display the mode you are in everytime
 set showmode
-" activate mouse
-set mouse=a
+" activate mouse (but without visual mode)
+set mouse=nicr
 
 " when in insert mode, ready to paste, if you press <F2>, Vim will switch to paste mode, disabling all kinds of smartness and just pasting a whole buffer of text. Then, you can disable paste mode again with another press of <F2>. Nice and simple
 set pastetoggle=<F2>
@@ -207,6 +207,13 @@ nnoremap <leader>x :s/\[[x ]\]/\=submatch(0) == '[x]' ? '[ ]' : '[x]'/<cr>:noh<c
 nnoremap <leader>pj mmgdf=w"my$"_ddV`m:s//<c-r>m/gc<cr>
 
 nnoremap <leader>) A)<Esc>
+
+" surround selection
+vnoremap <leader>( c()<Esc>P
+vnoremap <leader>[ c[]<Esc>P
+vnoremap <leader>{ c{}<Esc>P
+vnoremap <leader>' c''<Esc>P
+vnoremap <leader>" c""<Esc>P
 
 " more natural split opening
 set splitbelow
