@@ -1,6 +1,6 @@
 " true
 " forces vim to source .vimrc file if it is present in working directory
-" set exrc
+set exrc
 " might be security hole -> enable security option (restrict some commands)
 set secure
 
@@ -53,7 +53,7 @@ set t_Co=256   " This is may or may not needed.
 "colorscheme solarized
 set background=dark
 colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
+"let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_termcolors='16'
 
 " enable syntax highlighting
@@ -64,6 +64,7 @@ syntax enable
 " disable via set nonumber
 set number
 set relativenumber
+nnoremap <F9> :set number!<cr>:set relativenumber!<cr>
 
 " leave some lines visible at top and end of screen when scrolling
 set scrolloff=1
@@ -82,7 +83,9 @@ set list
 set hlsearch
 " highlight search result while typing
 set incsearch
-" only case sensitive when search string contains uppercase letter (does not " apply for * and #)
+" case insensitive search
+set ignorecase
+" only case sensitive when search string contains uppercase letter (does not apply for * and #)
 set smartcase
 
 "display incomplete commands
@@ -136,6 +139,31 @@ nnoremap <BS> :b#<CR>
 " <leader><space>
 " <C-Space>
 
+"nnoremap <F6> :setlocal spell spelllang=de_de<cr>
+"nnoremap <F7> :setlocal spell spelllang=en_us<cr>
+" Spell Check
+" Toggles between no checking, german and english
+let g:myLangList=["nospell","de_de","en_us"]
+function! ToggleSpell()
+  if !exists( "b:myLang" )
+    if &spell
+      let b:myLang=index(g:myLangList, &spelllang)
+    else
+      let b:myLang=0
+    endif
+  endif
+  let b:myLang=b:myLang+1
+  if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
+  if b:myLang==0
+    setlocal nospell
+  else
+    execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
+  endif
+  echo "spell checking language:" g:myLangList[b:myLang]
+endfunction
+
+nmap <silent> <F6> :call ToggleSpell()<CR>
+
 " leader
 :let mapleader = ","
 
@@ -149,6 +177,9 @@ nmap <leader>n :NERDTreeToggle<cr>
 
 " quick open vimrc file in new tab
 nnoremap <leader>v :tabe $MYVIMRC<cr>
+
+" open current file in a gui editor for easier (mouse based) copy-paste
+nnoremap <leader>e :w<cr> :!gedit %<cr>
 
 " Use CTRL-S for saving, also in Insert mode
 " They don't work, because <C-S> freezes my terminal
@@ -236,7 +267,6 @@ nmap <leader>o :TagbarToggle<CR>
 " Ale
 " ---
 
-nnoremap <Leader>l :ALELint<CR>
 
 " Language dependend Setings
 " ==========================
@@ -255,7 +285,8 @@ au BufNewFile,BufRead *.py
       \ set expandtab |
       \ set autoindent |
       \ set smarttab |
-      \ set fileformat=unix
+      \ set fileformat=unix |
+      \ nnoremap <Leader>l :ALELint<CR>
 
 
 " make vim aware of virtualenv, ans use it in autocompletion
@@ -302,7 +333,8 @@ au BufNewFile,BufRead *.tex
       \ set tabstop=2 |
       \ set softtabstop=2 |
       \ set shiftwidth=2 |
-      \ set expandtab
+      \ set expandtab |
+      \ nnoremap <Leader>l :tabe ~/M/dotfiles/own.sty<cr>
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a single file. This will confuse Latex-Suite. Set your grep
