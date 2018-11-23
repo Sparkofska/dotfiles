@@ -67,7 +67,7 @@ set relativenumber
 nnoremap <F9> :set number!<cr>:set relativenumber!<cr>
 
 " leave some lines visible at top and end of screen when scrolling
-set scrolloff=3
+set scrolloff=1
 
 " show a visual line under the cursor's current line
 set cursorline
