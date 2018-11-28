@@ -6,8 +6,9 @@
 \ProvidesPackage{own}
   [2018/05/08 v0.01 LaTeX package for my own purpose]
 
-\RequirePackage[german]{babel} % for german quotes
-%\RequirePackage{hyperref} % for \url command
+\RequirePackage{ngerman}
+%\RequirePackage[ngerman]{babel}
+\RequirePackage{hyperref} % for \url command
 
 % for syntax highlighting of code
 \RequirePackage{xcolor}
@@ -23,6 +24,9 @@
 %\let\myDate\date
 %\newcommand\GoodBye[1][\bfseries]{{#1Good Bye}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% no  operation
+\newcommand{\nop}[1]{}
 
 % German quotes
 \newcommand{\gqq}[1]{\glqq{}#1\grqq{}}
@@ -63,12 +67,15 @@ showstringspaces=false
 \newcommand{\iAllg}{\mbox{i.\,Allg.}\xspace}
 \newcommand{\etal}{\mbox{et al}.\xspace}
 \newcommand{\bzw}{bzw.\xspace}
+\newcommand{\bspw}{bspw.\xspace}
 \newcommand{\zzgl}{zzgl.\xspace}
 \newcommand{\etc}{etc.\xspace}
 \newcommand{\sog}{sog.\xspace}
 \newcommand{\bzgl}{bzgl.\xspace}
+\newcommand{\vgl}{vgl.\xspace}
 \newcommand{\ca}{ca.\xspace}
 
+\newcommand{\engl}[1]{(engl.\,\textit{#1})\xspace}
 \newcommand{\engldt}[2]{\emph{#1} (dt.\xspace#2)\xspace}
 \newcommand{\dtengl}[2]{#1 (engl.\,\textit{#2})\xspace}
 

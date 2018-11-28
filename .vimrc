@@ -267,7 +267,6 @@ nmap <leader>o :TagbarToggle<CR>
 " Ale
 " ---
 
-nnoremap <Leader>l :ALELint<CR>
 
 " Language dependend Setings
 " ==========================
@@ -286,7 +285,8 @@ au BufNewFile,BufRead *.py
       \ set expandtab |
       \ set autoindent |
       \ set smarttab |
-      \ set fileformat=unix
+      \ set fileformat=unix |
+      \ nnoremap <Leader>l :ALELint<CR>
 
 
 " make vim aware of virtualenv, ans use it in autocompletion
@@ -333,7 +333,8 @@ au BufNewFile,BufRead *.tex
       \ set tabstop=2 |
       \ set softtabstop=2 |
       \ set shiftwidth=2 |
-      \ set expandtab
+      \ set expandtab |
+      \ nnoremap <Leader>l :tabe ~/M/dotfiles/own.sty<cr>
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a single file. This will confuse Latex-Suite. Set your grep
