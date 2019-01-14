@@ -25,6 +25,26 @@
 %\newcommand\GoodBye[1][\bfseries]{{#1Good Bye}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beispielcode zum richtigen Setzen
+
+% Zahlen:
+% - bei großen Zahlen werden Zwischenräume nach 3 Stellen eingefügt
+% - Ein Zwischenraum nach dem Komma im Mathemodus wird vermieden
+% $7\,345\,023{,}34$
+
+% Silbentrennung
+%Silbentrennung Für deutsche Texte stehen die folgenden Trennhilfen zur Verfügung:
+%  -    Bindestrich, TEX trennt an dieser Stelle, jedoch nicht davor oder danach.
+%  \-   Trennstelle, vor und nach dieser Stelle wird die Trennung unterdrückt.
+%  "-   Trennstelle, jedoch bleibt die Trennung vor und nach dieser Stelle erhalten.
+%  ""   Trennstelle, bei Trennung wird an dieser Stelle kein Bindestrich hinzugefügt.
+%  "|   Trennstelle wie "-, jedoch wird ein kleiner Zwischenraum zur Trennung der Einzelbuchstaben einer Ligatur hinzugefügt.
+%  "~   Bindestrich, an dem nicht getrennt wird.
+%  "=   Bindestrich, an dem getrennt wird. Außerdem darf davor oder danach getrennt werden.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % no  operation
 \newcommand{\nop}[1]{}
 
@@ -37,7 +57,7 @@
 \newcommand\einheit[2][]{\emath{\textup{#2}^{#1}}}
 
 % for inline Code
-\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\texttt{#1}\xspace}
 
 \newcommand{\cpp}{\mbox{C\texttt{++}}\xspace}
 
@@ -76,12 +96,18 @@ showstringspaces=false
 \newcommand{\ca}{ca.\xspace}
 
 \newcommand{\engl}[1]{(engl.\,\textit{#1})\xspace}
-\newcommand{\engldt}[2]{\emph{#1} (dt.\xspace#2)\xspace}
+\newcommand{\engldt}[2]{\emph{#1} (dt.\,#2)\xspace}
 \newcommand{\dtengl}[2]{#1 (engl.\,\textit{#2})\xspace}
 
 % Colored commands
 \RequirePackage{xcolor}
 \newcommand{\TODO}[1]{{\color{violet}\emph{TODO:} #1}}
+
+% condition for draft
+\makeatletter
+\def\ifdraft{\ifdim\overfullrule>\z@
+\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi}
+\makeatother
 
 %\newcommand{\figurename}{Abbildung}
 %\newcommand{\tablename}{Tabelle}
@@ -95,6 +121,7 @@ showstringspaces=false
 \newcommand{\figsource}[1]{\raggedleft\footnotesize \sourcename:~#1}
 % url as footnote with last visited date
 \newcommand{\urlfootnote}[2]{\footnote{\url{#1}, letztmals besucht am #2}}
+\newcommand{\urlfootnotet}[3]{\footnote{#1. \url{#2}, letztmals besucht am #3}}
 
 % Table columns
 \RequirePackage{tabulary}
@@ -104,11 +131,28 @@ showstringspaces=false
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
 
-% 
+% checkboxes
 \newcommand{\uncheckedbox}{\ensuremath{\square}}
 \newcommand{\checkedbox}{\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}
 \newcommand{\crossedbox}{\ensuremath{\boxtimes}}
 
+% solarized colors
+\definecolor{solbase03}{RGB} {  0, 43, 54}
+\definecolor{solbase02}{RGB} {  7, 54, 66}
+\definecolor{solbase01}{RGB} { 88,110,117}
+\definecolor{solbase00}{RGB} {101,123,131}
+\definecolor{solbase0}{RGB}  {131,148,150}
+\definecolor{solbase1}{RGB}  {147,161,161}
+\definecolor{solbase2}{RGB}  {238,232,213}
+\definecolor{solbase3}{RGB}  {253,246,227}
+\definecolor{solyellow}{RGB} {181,137,  0}
+\definecolor{solorange}{RGB} {203, 75, 22}
+\definecolor{solred}{RGB}    {220, 50, 47}
+\definecolor{solmagenta}{RGB}{211, 54,130}
+\definecolor{solviolet}{RGB} {108,113,196}
+\definecolor{solblue}{RGB}   { 38,139,210}
+\definecolor{solcyan}{RGB}   { 42,161,152}
+\definecolor{solgreen}{RGB}  {133,153,  0}
 \endinput
 %%
 %% End of file `mypackage.sty'.

@@ -129,7 +129,6 @@ nnoremap - <C-x>
 " write file as sudo (without having opened as sudo)
 cmap w!! w !sudo tee > /dev/null %
 map n nzz
-"map <Cr> O<Esc>j
 
 " free mappings
 " <leader><leader>
@@ -214,6 +213,7 @@ vnoremap <leader>[ c[]<Esc>P
 vnoremap <leader>{ c{}<Esc>P
 vnoremap <leader>' c''<Esc>P
 vnoremap <leader>" c""<Esc>P
+vnoremap <leader>$ c$$<Esc>P
 
 " more natural split opening
 set splitbelow
@@ -365,3 +365,29 @@ let g:Tex_SmartKeyQuote=0
 verbose nmap <C-g> <Plug>IMAP_JumpForward
 verbose imap <C-g> <Plug>IMAP_JumpForward
 verbose vmap <C-g> <Plug>IMAP_JumpForward
+
+
+" Some experiments on smooth scroll
+" This is alsop accomplished by this plugin:
+" https://github.com/Kazark/vim-SimpleSmoothScroll
+function! SmoothScroll(up)
+    if a:up
+        let scrollaction=""
+    else
+        let scrollaction=""
+    endif
+    exec "normal " . scrollaction
+    redraw
+    let counter=1
+    while counter<&scroll
+        let counter+=1
+        sleep 5m
+        redraw
+        exec "normal " . scrollaction
+    endwhile
+endfunction
+nnoremap <C-U> :call SmoothScroll(1)<Enter>
+nnoremap <C-D> :call SmoothScroll(0)<Enter>
+
+nmap <up> <c-y><c-y><c-y><c-y><c-y><c-y>
+nmap <down> <c-e><c-e><c-e><c-e><c-e><c-e>
