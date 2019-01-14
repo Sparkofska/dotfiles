@@ -4,13 +4,13 @@ This is what I want to do when installing a new Ubuntu
 Before
 ------
 
-[ ] save Wifi passwords
-[ ] save aliases
-[ ] save private ssh keys
-[ ] check virtual box machines (see `~/VirtualBox`
-[ ] save `~/share` Folder
-[ ] save everything on harddrive
-[ ] save local stuff like `Pictures`, `Desktop`, ...
+[x] save Wifi passwords
+[x] save aliases
+[x] save private ssh keys
+[x] check virtual box machines (see `~/VirtualBox`)
+[x] save `~/share` Folder
+[x] save everything on harddrive
+[x] save local stuff like `Pictures`, `Desktop`, ...
 
 After
 -----
