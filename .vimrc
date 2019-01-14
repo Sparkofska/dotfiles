@@ -88,6 +88,21 @@ set ignorecase
 " only case sensitive when search string contains uppercase letter (does not apply for * and #)
 set smartcase
 
+" This global search function is from my thesis and needs some adaption for use in another project
+"function! SearchProject()
+"  :tabnew
+"  :args *tex chapters/*.tex
+"  call inputsave()
+"  let l:name = input('Search for: ')
+"  call inputrestore()
+"  execute "vimgrep /" . l:name . "/ " . expand('##')
+"  :copen
+"  nmap ]q :cnext<cr>
+"  nmap [q :cprev<cr>
+"endfunction
+"nmap <c-f> :call SearchProject()<cr>
+
+
 "display incomplete commands
 set showcmd
 "display the mode you are in everytime
