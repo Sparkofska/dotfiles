@@ -62,7 +62,7 @@ bindsym $mod+d exec dmenu_run -nf '#282828' -nb '#fbf1c7' -sf '#fbf1c7' -sb '#45
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # lock screen
-bindsym $mod+n exec i3lock -t -i ~/M/dotfiles/img/bg-lockscreen-himalaya.png
+#bindsym $mod+n exec i3lock -t -i ~/M/dotfiles/img/bg-lockscreen-himalaya.png
 
 # mimic Alt+Tab behavior: switch to previous used workspace
 bindsym $alt+Tab workspace back_and_forth
@@ -161,7 +161,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9 ; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
 # scratchpad
-bindsym $mod+m move scratchpad
+bindsym $mod+Shift+o move scratchpad
 bindsym $mod+o scratchpad show
 
 # reload the configuration file
@@ -197,13 +197,35 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+mode  "(s)leep (h)ybernate (p)owersave (r)estart shut(d)own" {
+
+        bindsym s exec sudo pm-suspend; mode "default"
+        bindsym h exec sudo pm-hibernate; mode "default"
+        bindsym p exec sudo pm-powersave; mode "default"
+        bindsym d exec sudo 'shutdown -h now'; mode "default"
+        bindsym r exec sudo 'shutdown -r now'; mode "default"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+n mode "(s)leep (h)ybernate (p)owersave (r)estart shut(d)own"
+
+# volume control
+bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '-5%'
+bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '+5%'
+bindsym XF86AudioMute exec /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# brightness control
+bindsym XF86MonBrightnessDown exec /home/francois/bin/set-brightness -
+bindsym XF86MonBrightnessUp exec /home/francois/bin/set-brightness +
 
 # set keyboardlayouts, that are toggleable by shift-caps
 # layouts are: us standart and us international with dead keys
 exec --no-startup-id setxkbmap -layout us,us -variant ,intl -option grp:shift_caps_toggle
 
-# set monitor settings via xranr
-exec "xrandr --output HDMI-1 --right-of HDMI-2"
+# set monitor settings via xrandr
+# TODO: change this absolut path
+bindsym $mod+m exec ~/M/dotfiles/.config/i3/monitors.sh
 
 # set a background image
 exec --no-startup-id feh --bg-max ~/M/dotfiles/img/bg-himalaya.png
@@ -306,3 +328,6 @@ client.urgent           $neutral_red $neutral_red $light0_hard $neutral_red $neu
 
 # enable numlock
 exec_always --no-startup-id numlockx on
+
+# start gnome deamon to automatically enable hardware buttons
+exec --no-startup-id gnome-settings-daemon
