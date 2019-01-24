@@ -45,7 +45,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start file explorer
-bindsym $mod+e exec nautilus --no-desktop ~/M/Masterthesis/
+bindsym $mod+e exec nautilus --no-desktop
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -211,9 +211,10 @@ mode  "(s)leep (h)ybernate (p)owersave (r)estart shut(d)own" {
 bindsym $mod+n mode "(s)leep (h)ybernate (p)owersave (r)estart shut(d)own"
 
 # volume control
-bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '-5%'
-bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '+5%'
-bindsym XF86AudioMute exec /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
+# TODO: change this absolut path
+bindsym XF86AudioRaiseVolume exec --no-startup-id "~/M/dotfiles/.config/i3/volume.sh up"
+bindsym XF86AudioLowerVolume exec --no-startup-id "~/M/dotfiles/.config/i3/volume.sh down"
+bindsym XF86AudioMute exec "~/M/dotfiles/.config/i3/volume.sh mute"
 
 # brightness control
 bindsym XF86MonBrightnessDown exec /home/francois/bin/set-brightness -
@@ -229,6 +230,9 @@ bindsym $mod+m exec ~/M/dotfiles/.config/i3/monitors.sh
 
 # set a background image
 exec --no-startup-id feh --bg-max ~/M/dotfiles/img/bg-himalaya.png
+
+# start the gui like network managment tool
+exec --no-startup-id nm-applet
 
 # automatically start programs in specific workspaces on login
 exec --no-startup-id i3-msg "workspace $ws2; exec i3-sensible-terminal"
