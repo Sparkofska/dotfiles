@@ -228,6 +228,9 @@ exec --no-startup-id setxkbmap -layout us,us -variant ,intl -option grp:shift_ca
 # TODO: change this absolut path
 bindsym $mod+m exec ~/M/dotfiles/.config/i3/monitors.sh
 
+# start battery checking script, that shows warning notifications on low battery
+exec --no-startup-id ~/M/dotfiles/.config/i3/battery.sh
+
 # set a background image
 exec --no-startup-id feh --bg-max ~/M/dotfiles/img/bg-himalaya.png
 

@@ -1,6 +1,11 @@
 # config
 This is where my configurations go.
 
+## Depends on
+```bash
+acpi # battery and thermal information
+```
+
 ## Install
 
  Put this in `~/.bashrc`:
