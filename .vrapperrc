@@ -1,11 +1,13 @@
+let mapleader=","
+
 " enable gd in vrapper to jump to definition
 eclipseaction eclipsegotodef org.eclipse.jdt.ui.edit.text.java.open.editor
 nnoremap gd :eclipsegotodef<cr>
+nnoremap <leader>g :eclipsegotodef<cr>
 
 noremap <ESC> <ESC><ESC><ESC>
 inoremap <ESC> <ESC><ESC><ESC>
 
-let mapleader=","
 
 " semicolon at end of line
 nnoremap <Leader>, A;<ESC>
@@ -16,10 +18,25 @@ nnoremap <Leader>d O/**<CR><ESC>?\/\*\*<CR>jA
 " jump to first Constructor
 nnoremap <Leader>gc gg/class<RETURN>wyiw/<C-r>"<A-C-\>(<RETURN>
 
+" jump to next TODO
+nnoremap <leader>t /TODO<CR>
+
 " delete function()
 nnoremap dif bded%
 nnoremap cif bded%i
 
 " alternative increment/decrease binding (to not interfere with eclipse default ctrl-A, ctrl-x)
-nnoremap <Leader>+ <c-a>
-nnoremap <Leader>- <c-x>
+nnoremap + <c-a>
+nnoremap - <c-x>
+
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" Clear match highlighting
+noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+
+" highlight all occurences and show count stats in command line
+nnoremap <space> mm*:%s///gn<cr>`m
+nnoremap <BS> :b#<CR>
