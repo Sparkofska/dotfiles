@@ -404,5 +404,8 @@ endfunction
 nnoremap <C-U> :call SmoothScroll(1)<Enter>
 nnoremap <C-D> :call SmoothScroll(0)<Enter>
 
+" explicitly do it 5 times in a row instead of using 5command : simple smooth anymation
 nmap <up> <c-y><c-y><c-y><c-y><c-y><c-y>
 nmap <down> <c-e><c-e><c-e><c-e><c-e><c-e>
+nmap <left> zhzhzhzhzh
+nmap <right> zlzlzlzlzl
