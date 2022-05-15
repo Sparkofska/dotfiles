@@ -29,14 +29,11 @@ Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'alvan/vim-closetag' " close xml tag automatically
 Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
-Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
-Plugin 'rakr/vim-two-firewatch'
+"Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
 Plugin 'altercation/vim-colors-solarized' " solarized colorscheme
 Plugin 'christoomey/vim-tmux-navigator' " seemless navigation between vim and tmux panes
-Plugin 'majutsushi/tagbar' " tags and outline plugin
 Plugin 'tpope/vim-surround' " add surround functionality
-Plugin 'can3p/incbool.vim' " Toggle true/false
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file finder
 Plugin 'michaeljsmith/vim-indent-object' " indent as text object. Add mappings ai, ii, aI, iI
 
