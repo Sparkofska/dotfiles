@@ -225,6 +225,7 @@ bindsym XF86MonBrightnessUp exec /home/francois/bin/set-brightness +
 exec --no-startup-id setxkbmap -layout us,us -variant ,intl -option grp:shift_caps_toggle
 
 # set monitor settings via xrandr
+exec --no-startup-id bash ~/.screenlayout/laptoponly.sh
 # TODO: change this absolut path
 bindsym $mod+m exec ~/M/dotfiles/.config/i3/monitors.sh
 
@@ -320,7 +321,7 @@ set $faded_orange     #af3a03
 #start of window title bars & borders section
 
 # class                 border       |backgr      |text        |indicator   |child_border
-client.focused          $gray_244    $light4      $light0      $gray_244    $dark0
+client.focused          $gray_244    $light4      $light0      $gray_244    $gray_244
 client.focused_inactive $gray_244    $dark4       $gray_244    $gray_244    $dark0
 client.unfocused        $dark0       $dark0       $gray_244    $gray_244    $dark0
 client.urgent           $neutral_red $neutral_red $light0_hard $neutral_red $neutral_red

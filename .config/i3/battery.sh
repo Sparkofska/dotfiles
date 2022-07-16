@@ -33,7 +33,8 @@ while [ true ]; do
             fi
         fi
     else
-        DISPLAY=:0.0 /usr/bin/notify-send "Battery Charging" "$BATTINFO"
+        echo ' ' # noop
+        #DISPLAY=:0.0 /usr/bin/notify-send "Battery Charging" "$BATTINFO"
     fi
 
     sleep ${SLEEP_TIME}m

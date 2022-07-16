@@ -15,9 +15,10 @@ Before
 After
 -----
 
-[ ] remap fn and strg keys
+[x] remap fn and strg keys
 [ ] restore Wifi passwords
 [ ] install openCV
 [ ] restore aliases
 [ ] mount second harddrive on `~/M` (see `tmp_notes.md`)
 [ ] restore private ssh keys
+[ ] setup virtualbox windows
