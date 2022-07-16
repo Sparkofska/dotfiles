@@ -58,10 +58,7 @@ syntax on
 syntax enable
 
 " show line numbers
-" disable via set nonumber
 set number
-set relativenumber
-nnoremap <F9> :set number!<cr>:set relativenumber!<cr>
 
 " leave some lines visible at top and end of screen when scrolling
 set scrolloff=1
@@ -85,21 +82,6 @@ set ignorecase
 " only case sensitive when search string contains uppercase letter (does not apply for * and #)
 set smartcase
 
-" This global search function is from my thesis and needs some adaption for use in another project
-"function! SearchProject()
-"  :tabnew
-"  :args *tex chapters/*.tex
-"  call inputsave()
-"  let l:name = input('Search for: ')
-"  call inputrestore()
-"  execute "vimgrep /" . l:name . "/ " . expand('##')
-"  :copen
-"  nmap ]q :cnext<cr>
-"  nmap [q :cprev<cr>
-"endfunction
-"nmap <c-f> :call SearchProject()<cr>
-
-
 "display incomplete commands
 set showcmd
 "display the mode you are in everytime
@@ -109,12 +91,6 @@ set mouse=nicr
 
 " when in insert mode, ready to paste, if you press <F2>, Vim will switch to paste mode, disabling all kinds of smartness and just pasting a whole buffer of text. Then, you can disable paste mode again with another press of <F2>. Nice and simple
 set pastetoggle=<F2>
-
-" default to wrapped lines broken at wohle words
-set wrap
-" move in wrapped lines
-" map j gj
-" map k gk
 
 " let vim handle typing mistakes
 command! W w
@@ -127,10 +103,6 @@ command! Wa wa
 " " Mappings
 " " ========
 
-" easier increment/decrement of numbers (tmux escape key <C-a> also interferes with the default mapping)
-nnoremap + <C-a>
-nnoremap - <C-x>
-
 " Keep selection after indenting
 :vnoremap < <gv
 :vnoremap > >gv
@@ -142,13 +114,9 @@ nnoremap - <C-x>
 cmap w!! w !sudo tee > /dev/null %
 map n nzz
 
-" free mappings
-" <leader><leader>
 " highlight all occurences and show count stats in command line
 nnoremap <space> mm*:%s///gn<cr>`m
 nnoremap <BS> :b#<CR>
-" <leader><space>
-" <C-Space>
 
 "nnoremap <F6> :setlocal spell spelllang=de_de<cr>
 "nnoremap <F7> :setlocal spell spelllang=en_us<cr>
@@ -192,20 +160,8 @@ nnoremap <leader>v :tabe $MYVIMRC<cr>
 " open current file in a gui editor for easier (mouse based) copy-paste
 nnoremap <leader>e :w<cr> :!gedit %<cr>
 
-" Use CTRL-S for saving, also in Insert mode
-" They don't work, because <C-S> freezes my terminal
-" noremap <C-S> :update<CR>
-" vnoremap <C-S> <C-C>:update<CR>gv
-" inoremap <C-S> <C-O>:update<CR>
-
-" Replace all is aliased to S.
-nnoremap S :%s//g<Left><Left>
-
 " Clear match highlighting
 noremap <leader><space> :noh<cr>:call clearmatches()<cr>
-
-" shortcut for mapping double-leader while editing (leader, shift-leader)
-nnoremap <leader>< :nmap <leader><leader> 
 
 " switch case of word's first letter
 nmap <leader>c mmb~`m
