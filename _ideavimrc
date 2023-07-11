@@ -1,0 +1,49 @@
+set number
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set hls
+set visualbell
+set NERDTree
+
+let mapleader = ","
+nmap <leader>, mmA;<ESC>`m
+nmap <leader>; mmA << std::endl;<ESC>`m
+nmap <leader>: mmA:<ESC>`mo
+nmap <leader>) mmA)<Esc>`m
+nmap <leader>/ V:s/\\/\//g<Enter>
+nmap <leader>v :tabe c:\users\jmn\_ideavimrc<cr>
+nmap <space> mm*`m
+nmap <leader><space> :noh<cr>:call clearmatches()<cr>
+nmap <leader>c mmb~`m
+nmap <leader>= mm=i{`m
+nmap <leader>f mmgg=G`m
+vnoremap <leader>( c()<Esc>P
+vnoremap <leader>[ c[]<Esc>P
+vnoremap <leader>{ c{}<Esc>P
+vnoremap <leader>' c''<Esc>P
+vnoremap <leader>" c""<Esc>P
+vnoremap <leader>$ c$$<Esc>P
+
+nmap <leader><F5> :source C:/Users/jmn/_ideavimrc<cr>
+
+
+
+nnoremap <C-H> <C-w>h
+nnoremap <C-L> <C-w>l
+
+"
+" Keep selection after indenting
+:vnoremap < <gv
+:vnoremap > >gv
+
+" let vim handle typing mistakes
+"command! W w
+"command! Q q
+"command! Wq wq
+"command! WQ wq
+"command! Qa qa
+"command! Wa wa
+
+"command! reload source C:/Users/jmn/_vsvimrc<cr>
