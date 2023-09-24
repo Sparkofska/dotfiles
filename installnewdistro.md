@@ -15,7 +15,7 @@ Before
 After
 -----
 
-[x] remap fn and strg keys
+[x] remap fn and strg keys on my Thinkpad
 [ ] restore Wifi passwords
 [ ] install openCV
 [ ] restore aliases
