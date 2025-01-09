@@ -26,7 +26,6 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
-"Bundle 'Valloric/YouCompleteMe'
 Plugin 'alvan/vim-closetag' " close xml tag automatically
 Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
@@ -218,16 +217,6 @@ if executable('ag')
 "   let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 "   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
-
-" YouCompleteMe
-" ---------------
-
-" close ycm auto completion window when you're done
-let g:ycm_autoclose_preview_window_after_completion=1
-" shortcut for ycm for goto definition
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"nnoremap <leader>G :tab split \| YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>G :vs \| YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " define BadWhitespace before using in a match
 " highlight BadWhitespace ctermbg=red guibg=darkred
