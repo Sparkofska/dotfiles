@@ -25,14 +25,15 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
-Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
 Plugin 'alvan/vim-closetag' " close xml tag automatically
-Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
-Plugin 'morhetz/gruvbox' " gruvbox colorscheme
 Plugin 'christoomey/vim-tmux-navigator' " seemless navigation between vim and tmux panes
-Plugin 'tpope/vim-surround' " add surround functionality
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file finder
 Plugin 'michaeljsmith/vim-indent-object' " indent as text object. Add mappings ai, ii, aI, iI
+Plugin 'morhetz/gruvbox' " gruvbox colorscheme
+Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround' " add surround functionality
+Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
 
 
 " All of your Plugins must be added before the following line
@@ -77,15 +78,13 @@ set ignorecase
 " only case sensitive when search string contains uppercase letter (does not apply for * and #)
 set smartcase
 
+set nowrap
+
 "display incomplete commands
 set showcmd
-"display the mode you are in everytime
-set showmode
 " activate mouse (but without visual mode)
-set mouse=nicr
-
-" when in insert mode, ready to paste, if you press <F2>, Vim will switch to paste mode, disabling all kinds of smartness and just pasting a whole buffer of text. Then, you can disable paste mode again with another press of <F2>. Nice and simple
-set pastetoggle=<F2>
+"set mouse=nicr
+set mouse=a
 
 " let vim handle typing mistakes
 command! W w
@@ -107,42 +106,23 @@ command! Wa wa
 " ---------------------------------------------------------------------------------
 " write file as sudo (without having opened as sudo)
 cmap w!! w !sudo tee > /dev/null %
-map n nzz
-
-" highlight all occurences and show count stats in command line
-nnoremap <space> mm*:%s///gn<cr>`m
-nnoremap <BS> :b#<CR>
-
-"nnoremap <F6> :setlocal spell spelllang=de_de<cr>
-"nnoremap <F7> :setlocal spell spelllang=en_us<cr>
-" Spell Check
-" Toggles between no checking, german and english
-let g:myLangList=["nospell","de_de","en_us"]
-function! ToggleSpell()
-  if !exists( "b:myLang" )
-    if &spell
-      let b:myLang=index(g:myLangList, &spelllang)
-    else
-      let b:myLang=0
-    endif
-  endif
-  let b:myLang=b:myLang+1
-  if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
-  if b:myLang==0
-    setlocal nospell
-  else
-    execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
-  endif
-  echo "spell checking language:" g:myLangList[b:myLang]
-endfunction
-
-nmap <silent> <F6> :call ToggleSpell()<CR>
+"map n nzz
 
 " leader
 :let mapleader = ","
 
+" highlight all occurences and show count stats in command line
+nnoremap <space> mm*:%s///gn<cr>`m
+" Clear match highlighting
+noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+nnoremap <BS> :b#<CR>
+
+
 " reload default vimrc
 nnoremap <leader><F5> :source $MYVIMRC<cr>
+
+" 'tail mode' for e.g. logfiles
+nnoremap <F5> :e<CR>G
 
 " indent all lines and jump back to last position
 nnoremap <leader>f mmgg=G`m
@@ -153,14 +133,25 @@ nmap <C-Left> :NERDTreeFind<cr>
 " open nerdtree on right side
 let g:NERDTreeWinPos = "right"
 
+" netrw settings
+" nnoremap <leader>n :Lexplore<cr>
+" display in tree style
+" let g:netrw_liststyle=3
+" let g:netrw_winsize = 40
+
 " quick open vimrc file in new tab
 nnoremap <leader>v :tabe $MYVIMRC<cr>
 
 " open current file in a gui editor for easier (mouse based) copy-paste
 nnoremap <leader>e :w<cr> :!gedit %<cr>
 
-" Clear match highlighting
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+
+" append semicolon to end of line
+nnoremap <leader>, mmA;<Esc>`m
+
+" replace \  by / in current line
+nnoremap <leader>/ :s/\\/\//g<cr>
+
 
 " switch case of word's first letter
 nmap <leader>c mmb~`m
@@ -173,6 +164,7 @@ nnoremap <leader>x :s/\[[x ]\]/\=submatch(0) == '[x]' ? '[ ]' : '[x]'/<cr>:noh<c
 nnoremap <leader>pj mmgdf=w"my$"_ddV`m:s//<c-r>m/gc<cr>
 
 nnoremap <leader>) A)<Esc>
+nnoremap <leader>= =i{
 
 " surround selection
 vnoremap <leader>( c()<Esc>P
@@ -190,6 +182,11 @@ set splitright
 " underline headings
 nmap <leader>h1 yypVr=
 nmap <leader>h2 yypVr-
+
+" indentation settings
+autocmd FileType xml,xslt setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+autocmd FileType xsl,dtcapp,dtcinc setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+
 
 " Plugin Settings
 " =================
@@ -250,7 +247,7 @@ au BufNewFile,BufRead *.py
 " -----------
 
 " html intendation
-au BufNewFile,BufRead *.js,*.html,*.css
+au BufNewFile,BufRead *.js,*.html,*.css,*.scss,*.json
       \ set tabstop=2 |
       \ set softtabstop=2 |
       \ set shiftwidth=2 |
