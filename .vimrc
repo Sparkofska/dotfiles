@@ -29,7 +29,6 @@ Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
 "Bundle 'Valloric/YouCompleteMe'
 Plugin 'alvan/vim-closetag' " close xml tag automatically
 Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
-"Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
 Plugin 'christoomey/vim-tmux-navigator' " seemless navigation between vim and tmux panes
 Plugin 'tpope/vim-surround' " add surround functionality
@@ -276,45 +275,6 @@ au BufNewFile,BufRead *.h,*.hpp,*.cpp
       \ set expandtab |
       \ set autoindent |
       \ set smarttab
-
-" Octave syntax  ----------------------------------------
-augroup filetypedetect 
-  au! BufRead,BufNewFile *.m,*.oct set filetype=octave 
-augroup END 
-
-" Latex 
-" -----
-
-" latex intendation
-au BufNewFile,BufRead *.tex
-      \ set tabstop=2 |
-      \ set softtabstop=2 |
-      \ set shiftwidth=2 |
-      \ set expandtab |
-      \ nnoremap <Leader>l :tabe ~/M/dotfiles/own.sty<cr>
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a single file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-" disable automatic folding on startup
-let Tex_FoldedSections=""
-let Tex_FoldedEnvironments=""
-let Tex_FoldedMisc=""
-
-" disable smart quotes
-let g:Tex_SmartKeyQuote=0
-
-" redef C-j to C-space: the <++> placeholder of latex-suite interferes with the window switching c-j
-verbose nmap <C-g> <Plug>IMAP_JumpForward
-verbose imap <C-g> <Plug>IMAP_JumpForward
-verbose vmap <C-g> <Plug>IMAP_JumpForward
 
 
 " Some experiments on smooth scroll
