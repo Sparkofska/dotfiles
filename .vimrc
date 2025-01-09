@@ -26,12 +26,12 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 Plugin 'scrooloose/nerdtree' " https://github.com/scrooloose/nerdtree
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Plugin 'alvan/vim-closetag' " close xml tag automatically
 Plugin 'Valloric/MatchTagAlways' " highlight matching xml tag
 "Plugin 'vim-latex/vim-latex' " https://github.com/vim-latex/vim-latex
 Plugin 'morhetz/gruvbox' " gruvbox colorscheme
-Plugin 'altercation/vim-colors-solarized' " solarized colorscheme
+"Plugin 'altercation/vim-colors-solarized' " solarized colorscheme
 Plugin 'christoomey/vim-tmux-navigator' " seemless navigation between vim and tmux panes
 Plugin 'tpope/vim-surround' " add surround functionality
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy file finder
@@ -153,6 +153,10 @@ nnoremap <leader><F5> :source $MYVIMRC<cr>
 nnoremap <leader>f mmgg=G`m
 " toggle nerdtree
 nmap <leader>n :NERDTreeToggle<cr>
+" find current file in tree view
+nmap <C-Left> :NERDTreeFind<cr>
+" open nerdtree on right side
+let g:NERDTreeWinPos = "right"
 
 " quick open vimrc file in new tab
 nnoremap <leader>v :tabe $MYVIMRC<cr>
@@ -229,18 +233,10 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap <leader>G :tab split \| YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>G :vs \| YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" TagBar
-" ------
-
-nmap <leader>o :TagbarToggle<CR>
-
 " define BadWhitespace before using in a match
 " highlight BadWhitespace ctermbg=red guibg=darkred
 " mark extra whitespace as bad, and probably color it red
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-" Ale
-" ---
 
 
 " Language dependend Setings
@@ -264,17 +260,6 @@ au BufNewFile,BufRead *.py
       \ nnoremap <Leader>l :ALELint<CR>
 
 
-" make vim aware of virtualenv, ans use it in autocompletion
-"python with virtualenv support
-py3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  #execfile(activate_this, dict(__file__=activate_this) )
-  exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
-EOF
 
 " html and co
 " -----------
